@@ -1,7 +1,53 @@
+# Python
 *.pyc
 __pycache__/
-.env
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Flask
+instance/
+.webassets-cache
+
+# Database
 *.db
-.DS_Store
+*.sqlite3
+
+# Environment variables
+.env
+.env.local
+
+# IDE
 .vscode/
-.node_modules/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node (for Vercel CLI)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Vercel
+.vercel
