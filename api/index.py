@@ -13,12 +13,6 @@ app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-producti
 basedir = os.path.abspath(os.path.dirname(__file__))
 root_dir = os.path.dirname(basedir)
 
-# Debug - print paths to verify
-print(f"Base dir: {basedir}")
-print(f"Root dir: {root_dir}")
-print(f"Template folder: {os.path.join(root_dir, 'templates')}")
-print(f"Login.html exists: {os.path.exists(os.path.join(root_dir, 'templates', 'login.html'))}")
-
 # Database connection
 def get_db_connection():
     conn = psycopg2.connect(os.environ.get('POSTGRES_URL'))
