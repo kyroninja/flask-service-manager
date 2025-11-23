@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Service - Service Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Add Service</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="service_name">Service Name</label>
+                    <input type="text" id="service_name" name="service_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cloud_provider">Cloud Provider</label>
+                    <select id="cloud_provider" name="cloud_provider" required>
+                        <option value="">Select Provider</option>
+                        <option value="aws">AWS</option>
+                        <option value="azure">Azure</option>
+                        <option value="gcp">GCP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="access_key">Access Key</label>
+                    <input type="text" id="access_key" name="access_key" required>
+                </div>
+                <div class="form-group">
+                    <label for="secret_key">Secret Key</label>
+                    <input type="password" id="secret_key" name="secret_key" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Service</button>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

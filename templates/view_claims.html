@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Claims - Service Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="claims-container">
+            <h1>Claims Information</h1>
+            
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+            
+            {% if claims_data %}
+            <div class="claims-list">
+                {% for claim in claims_data %}
+                <div class="claim-item">
+                    <div class="claim-header">
+                        <h3>Claim #{{ claim.id or loop.index }}</h3>
+                        <span class="claim-state {{ claim.state|lower }}">{{ claim.state or 'Unknown' }}</span>
+                    </div>
+                    <p><strong>Date:</strong> {{ claim.date or 'N/A' }}</p>
+                    {% if claim.service_name %}
+                    <p><strong>Service:</strong> {{ claim.service_name }}</p>
+                    {% endif %}
+                    {% if claim.amount %}
+                    <p><strong>Amount:</strong> ${{ claim.amount }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-center">No claims data available</p>
+            {% endif %}
+            
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

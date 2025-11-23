@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Service Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <span>Welcome, {{ username }}</span>
+            </div>
+            <div class="dashboard-grid">
+                <a href="{{ url_for('add_service') }}" class="dashboard-card">
+                    <h2>Add Service</h2>
+                    <p>Add a new cloud service provider</p>
+                </a>
+                <a href="{{ url_for('view_claims') }}" class="dashboard-card">
+                    <h2>View Claims</h2>
+                    <p>Check claims information</p>
+                </a>
+                <a href="{{ url_for('logout') }}" class="dashboard-card logout">
+                    <h2>Logout</h2>
+                    <p>Sign out of your account</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
