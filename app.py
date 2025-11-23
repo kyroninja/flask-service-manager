@@ -147,6 +147,9 @@ def add_service():
 @app.route('/view-claims')
 @login_required
 def view_claims():
+    import os, requests
+    from flask import session, render_template
+
     # Get claims endpoint from environment variable
     claims_endpoint = os.environ.get('CLAIMS_ENDPOINT_URL', '')
     
@@ -155,22 +158,27 @@ def view_claims():
     
     if claims_endpoint:
         try:
-            # Call your separate system's claims endpoint
+            # Call the updated claims endpoint
             response = requests.get(
                 claims_endpoint,
-                params={'user_id': session['user_id']},
+                params={'user_id': session.get('user_id')},
                 timeout=10
             )
             if response.status_code == 200:
+                # The endpoint now returns a JSON array directly
                 claims_data = response.json()
+            else:
+                error = f"Error fetching claims: {response.status_code} {response.text}"
         except Exception as e:
             error = f"Error fetching claims data: {str(e)}"
     else:
         error = "Claims endpoint not configured"
     
-    return render_template('view_claims.html', 
-                         claims_data=claims_data, 
-                         error=error)
+    return render_template(
+        'view_claims.html', 
+        claims_data=claims_data, 
+        error=error
+    )
 
 @app.route('/logout')
 def logout():
