@@ -20,15 +20,15 @@
                 {% for claim in claims_data %}
                 <div class="claim-item">
                     <div class="claim-header">
-                        <h3>Claim #{{ claim.id or loop.index }}</h3>
+                        <h3>Claim #{{ claim.claim_id or loop.index }}</h3>
                         <span class="claim-state {{ claim.state|lower }}">{{ claim.state or 'Unknown' }}</span>
                     </div>
                     <p><strong>Date:</strong> {{ claim.date or 'N/A' }}</p>
-                    {% if claim.service_name %}
-                    <p><strong>Service:</strong> {{ claim.service_name }}</p>
-                    {% endif %}
-                    {% if claim.amount %}
-                    <p><strong>Amount:</strong> ${{ claim.amount }}</p>
+                    <p><strong>Service:</strong> {{ claim.description or 'N/A' }}</p>
+                    <p><strong>Amount:</strong> {{ claim.amount or 'N/A' }}</p>
+                    <p><strong>Region:</strong> {{ claim.region or 'N/A' }}</p>
+                    {% if claim.resource_id %}
+                    <p><strong>Resource ID:</strong> {{ claim.resource_id }}</p>
                     {% endif %}
                 </div>
                 {% endfor %}
